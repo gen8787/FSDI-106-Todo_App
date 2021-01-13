@@ -1,0 +1,36 @@
+body {
+    background-image: linear-gradient(#d3bb51, #ac8f0f);
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+    color: black;
+}
+
+hr {
+    color: rgb(114, 39, 39);
+}
+
+.form {
+    width: 80%;
+}
+
+.todos {
+    min-height: 300px;
+}
+
+.green {
+    color: green;
+}
+
+.yellow {
+    color: yellow;
+}
+
+.red {
+    color: red;
+}
