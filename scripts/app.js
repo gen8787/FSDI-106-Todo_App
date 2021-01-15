@@ -2,12 +2,12 @@
 const allTodos = {
     nextTodoId: 1,
     todos: [],
-    completedTodos: []
+    completedTodos: []  // ? ? ? ? ?
 }
 
 
 // D E S T R U C T U R E
-var { nextTodoId, todos } = allTodos;
+var { nextTodoId, todos, completedTodos } = allTodos; // ? ? ? ? ?
 
 
 // C R E A T E   T O D O
@@ -32,6 +32,7 @@ function createTodo() {
 // D I S P L A Y   O N E   T O D O
 function oneTodo(todo) {
     let priorityColor = "";
+    let addCompletedClass = "";
 
     switch(todo.priority) {
         case "low" :
@@ -45,10 +46,20 @@ function oneTodo(todo) {
             break;
     }
 
-    var oneTodo = `<li id="${todo.todoId}"><button id="${todo.todoId}" class="mb-1 btn btn-sm btn-outline-danger" onclick="completeTodo(${todo.todoId})">Complete</button> <b class="${priorityColor}">${todo.todo}</b></li>`;
+    switch(todo.completed) {
+        case false :
+            break;
+        case true :
+            addCompletedClass = "isCompleted";
+            break;
+    }
+
+
+    var oneTodo = `<li id="li${todo.todoId}"><button id="btn${todo.todoId}" class="${addCompletedClass} mb-1 btn btn-sm btn-outline-danger" onclick="completeTodo(${todo.todoId})">Complete</button> <b class="${priorityColor}">${todo.todo}</b></li>`;
 
     if (todo.completed === false) {
         $("#allTodos").append(oneTodo);
+
     } else if (todo.completed === true) {
         $("#completedTodos").append(oneTodo);
     }
@@ -58,6 +69,7 @@ function oneTodo(todo) {
 // D I S P L A Y   A L L   T O D O S
 function displayAllTodos() {
     $("#allTodos").html("");
+    $("#completedTodos").html("");
 
     for (var i = 0; i < todos.length; i ++) {
         oneTodo(todos[i]);
@@ -73,6 +85,7 @@ function completeTodo(todoId) {
         if (completedTodo.todoId === todoId) {
             todos[i].completed = true;
         }
+
     }
 
     displayAllTodos();

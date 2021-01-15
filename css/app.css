@@ -34,3 +34,7 @@ hr {
 .red {
     color: red;
 }
+
+.isCompleted {
+    display: none;
+}
